@@ -6,7 +6,7 @@ public class MyPlayerControl : MonoBehaviour
 {
     private Transform myTransform; // Æ®·£½ºÆû Ä³½Ì¿ëµµ.
 
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
