@@ -8,6 +8,8 @@ public class MyPlayerControl : MonoBehaviour
 
     public float moveSpeed = 5.0f;
 
+    public GameObject bulletPrefabs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,11 @@ public class MyPlayerControl : MonoBehaviour
         Vector3 moveDirectionY = Vector3.up * moveAmountY * moveSpeed * Time.deltaTime;
 
         myTransform.Translate(moveDirectionX + moveDirectionY);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bulletPrefabs, myTransform.position, Quaternion.identity);
+        }
 
     }
 }

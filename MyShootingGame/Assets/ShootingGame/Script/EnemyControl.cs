@@ -23,7 +23,21 @@ public class EnemyControl : MonoBehaviour
 
         if(myTransform.position.y < -5.2f)
         {
-            myTransform.position = new Vector3(Random.Range(-8.0f, 8.0f), 6.0f, 0f);
+            PositionInit();
         }
     }
+
+    private void PositionInit()
+    {
+        myTransform.position = new Vector3(Random.Range(-8.0f, 8.0f), 6.0f, 0f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Bullet"))
+        {
+            PositionInit();
+        }
+    }
+
 }
