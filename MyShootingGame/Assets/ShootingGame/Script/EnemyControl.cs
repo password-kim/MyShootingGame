@@ -8,6 +8,8 @@ public class EnemyControl : MonoBehaviour
 
     public float moveSpeed = 5.0f;
 
+    public GameObject explosionEffect = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class EnemyControl : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Bullet"))
         {
+            Instantiate(explosionEffect, myTransform.position, Quaternion.identity);
             PositionInit();
         }
     }
