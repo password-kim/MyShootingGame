@@ -1,6 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyControl : MonoBehaviour
 {
@@ -10,9 +15,15 @@ public class EnemyControl : MonoBehaviour
 
     public GameObject explosionEffect = null;
 
+    // UI
+    private int score = 0;
+
+    public TextMeshProUGUI textScore = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         myTransform = GetComponent<Transform>();
     }
 
@@ -40,6 +51,14 @@ public class EnemyControl : MonoBehaviour
         {
             Instantiate(explosionEffect, myTransform.position, Quaternion.identity);
             PositionInit();
+            
+            score += 100;
+            textScore.text = "<color=blue>SCORE</color> : <color=red>" + score.ToString() + "</color>";
+
+            if(score >= 1000)
+            {
+                SceneManager.LoadScene("ShootingClear");
+            }
         }
     }
 
